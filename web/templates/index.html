@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作业管理系统</title>
+</head>
+<body>
+    <h1>作业管理系统</h1>
+    {% if 'user_id' in session %}
+        <p>欢迎，{{ session['role'] }} {{ session['username'] }}！</p>
+        <a href="{{ url_for('logout') }}">退出登录</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">登录</a>
+        <a href="{{ url_for('register') }}">注册</a>
+    {% endif %}
+
+    <form method="GET" action="{{ url_for('home') }}">
+        <input type="text" name="search" placeholder="搜索作业" value="{{ search_query }}">
+        <button type="submit">搜索</button>
+    </form>
+
+    <h2>作业列表</h2>
+    {% if assignments %}
+        {% for assignment in assignments %}
+            <div>
+                <h3>{{ assignment[1] }}</h3>
+                <p>{{ assignment[2] }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>暂无作业</p>
+    {% endif %}
+</body>
+</html>

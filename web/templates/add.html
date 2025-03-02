@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加作业</title>
+</head>
+<body>
+    <h1>添加作业</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="作业标题" required>
+        <textarea name="description" placeholder="作业描述" required></textarea>
+        <input type="file" name="file">
+        <button type="submit">添加</button>
+    </form>
+    <a href="{{ url_for('home') }}">返回主页</a>
+</body>
+</html>
